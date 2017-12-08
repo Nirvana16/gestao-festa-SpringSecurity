@@ -2,6 +2,7 @@ package com.algaworks.festa.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +18,11 @@ public class AppController {
 	@RequestMapping(value = {"/trocasenha"}, method = RequestMethod.GET)
 	public String trocasenha(Model model) {
 		return "trocasenha"; 
+	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
 	}
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
