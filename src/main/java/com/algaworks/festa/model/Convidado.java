@@ -14,6 +14,7 @@ public class Convidado {
 	private Long id;
 	private String nome;
 	private Integer quantidadeAcompanhantes;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_festa")
 	private Festa festa;
