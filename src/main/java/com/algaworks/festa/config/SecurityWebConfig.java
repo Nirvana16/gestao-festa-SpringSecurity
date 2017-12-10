@@ -29,15 +29,17 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
 	  http
 	    .authorizeRequests()
-	    	.antMatchers("/resources/**","/css/**","/fonts/**","/images/**","/js/**","/index","/").permitAll()
+	    	.antMatchers("/resources/**","/css/**","/fonts/**","/images/**","/js/**").permitAll()
+	    	// libera acesso a convidados quem tiver a permissao de convidados
+	    	.antMatchers("/convidados").hasRole("CADASTRAR_CONVIDADOS") 
+	    	// libera acesso a /festas quem tiver a permissao CADASTRAR_FESTAS
+	    	.antMatchers("/festas").hasRole("CADASTRAR_FESTAS")
 	        .anyRequest().authenticated()
 	    .and()
-	    .formLogin()
-	        // Aqui dizemos que temos uma página customizada.
-	        .loginPage("/login") 
-	        // Mesmo sendo a página de login, precisamos avisar
-	        // ao Spring Security para liberar o acesso a ela.
-	        .permitAll(); 
+	    .formLogin().loginPage("/login")// Aqui dizemos que temos uma página customizada.
+	    	.permitAll()// Mesmo sendo a página de login, precisamos avisar ao Spring Security para liberar o acesso a ela.
+	    .and()
+	    .rememberMe(); // faz o spring lembrar de voce ;-)
 	}
 
   public static void main(String[] args) {
