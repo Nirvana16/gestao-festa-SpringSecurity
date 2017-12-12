@@ -24,6 +24,11 @@ public class AppController {
 	public String login() {
 		return "login";
 	}
+	
+	@RequestMapping("/403")
+	public String accessDenied() {
+	    return "403";
+	}
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public ModelAndView accesssDenied() {

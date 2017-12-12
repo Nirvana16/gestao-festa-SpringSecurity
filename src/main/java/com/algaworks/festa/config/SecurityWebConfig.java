@@ -37,7 +37,11 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 	    .formLogin().loginPage("/login")// Aqui dizemos que temos uma página customizada.
 	    	.permitAll()// Mesmo sendo a página de login, precisamos avisar ao Spring Security para liberar o acesso a ela.
 	    .and()
-	    .rememberMe(); // faz o spring lembrar de voce ;-)
+	    .rememberMe() // faz o spring lembrar de voce ;-)
+	    .and()
+	    .logout().logoutSuccessUrl("/login")
+	    .and()
+	    .exceptionHandling().accessDeniedPage("/403");
 	}
 
   public static void main(String[] args) {
