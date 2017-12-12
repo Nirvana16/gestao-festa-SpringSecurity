@@ -30,10 +30,8 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 	  http
 	    .authorizeRequests()
 	    	.antMatchers("/resources/**","/css/**","/fonts/**","/images/**","/js/**").permitAll()
-	    	// libera acesso a convidados quem tiver a permissao de convidados
-	    	.antMatchers("/convidados").hasRole("CADASTRAR_CONVIDADOS") 
-	    	// libera acesso a /festas quem tiver a permissao CADASTRAR_FESTAS
-	    	.antMatchers("/festas").hasRole("CADASTRAR_FESTAS")
+	    	.antMatchers("/convidados").hasRole("CADASTRAR_CONVIDADOS") // libera acesso a convidados quem tiver a permissao de convidados
+	    	.antMatchers("/festas").hasRole("CADASTRAR_FESTAS") // libera acesso a /festas quem tiver a permissao CADASTRAR_FESTAS
 	        .anyRequest().authenticated()
 	    .and()
 	    .formLogin().loginPage("/login")// Aqui dizemos que temos uma página customizada.
